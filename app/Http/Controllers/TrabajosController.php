@@ -18,6 +18,17 @@ class TrabajosController extends Controller
         return view("servicios.detail",compact('clientes'));
     }
 
+    public function creating(Request $request)
+    {
+        if($request->cliente==""){
+            $clientes = clientes::All();
+            return view("servicios.detail",compact('clientes'))->with('error',"Debe seleccionar un cliente");
+        }
+        $cliente = clientes::find($request->cliente);
+        $fecha = \Carbon\Carbon::parse($request->fecha)->format('d-m-Y');
+        return view("servicios.add",compact('cliente', 'fecha'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

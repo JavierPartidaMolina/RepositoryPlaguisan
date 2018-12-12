@@ -23,6 +23,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/especies', 'EspeciesController@index');
     Route::get('/productos', 'ProductosController@index');
 
+    Route::post('creatingJob', 'TrabajosController@creating');
+
     Route::get('editcliente/{id}', 'ClientesController@edit');
     Route::get('editespecie/{id}', 'EspeciesController@edit');
     Route::get('editproducto/{id}', 'ProductosController@edit');

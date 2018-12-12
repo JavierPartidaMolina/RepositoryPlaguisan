@@ -11,7 +11,7 @@
             <input name="nombreVulgar" value="{{ old('nombreVulgar') }}" style="width:70%;" type="text" class="form-control" >
             <br>
             <p>Tipo:</p>
-            <select class="form-control" name="tipo" value="{{ old('tipo') }}">
+            <select style="width: 70%;" class="form-control" name="tipo" value="{{ old('tipo') }}">
                 <option>Insecto</option>
                 <option>Roedor</option>
             </select>
