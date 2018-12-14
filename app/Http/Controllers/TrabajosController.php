@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\clientes;
+use App\productos;
 
 class TrabajosController extends Controller
 {
@@ -29,6 +30,13 @@ class TrabajosController extends Controller
         return view("servicios.add",compact('cliente', 'fecha'));
     }
 
+    public function pegatina($id, $fech){
+        $cliente = clientes::find($id);
+        $fecha= $fech;
+        $fecha2 = \Carbon\Carbon::parse($fech)->addYear()->format('d-m-Y');
+        $productos = productos::All();
+        return view("servicios.pegatina",compact('cliente','fecha','productos','fecha2'));
+    }
     /**
      * Show the form for creating a new resource.
      *

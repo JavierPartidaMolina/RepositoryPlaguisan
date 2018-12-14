@@ -38,7 +38,9 @@
         <br>
         <button type="button" class="btn btn-primary">Diagnosis<button>
         <button type="button" class="btn btn-primary">Certificado<button>
-        <button type="button" class="btn btn-primary">Pegatina<button>
+        <a href="{{url('pegatina/'.$cliente->id.'/'.$fecha)}}">
+            <button  type="submit" class = "btn btn-primary">Pegatina</button>
+        </a>
         <button type="button" class="btn btn-primary">Contrato<button>
         <button type="button" class="btn btn-primary">Factura<button>
     </div>

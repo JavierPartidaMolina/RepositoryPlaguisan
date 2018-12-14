@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +14,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 Route::group(['middleware' => 'auth'], function () {
+
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/findcliente', 'ClientesController@find');
     Route::get('/clientes', 'ClientesController@index');
@@ -22,6 +22,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/trabajos', 'TrabajosController@index');
     Route::get('/especies', 'EspeciesController@index');
     Route::get('/productos', 'ProductosController@index');
+
+    Route::get('/pegatina/{id}/{fecha}', 'TrabajosController@pegatina');
 
     Route::post('creatingJob', 'TrabajosController@creating');
 
@@ -40,6 +42,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('addclientes', 'ClientesController@store');
     Route::post('addespecies', 'EspeciesController@store');
     Route::post('addproducto', 'ProductosController@store');
+
+    Route::get('pdf/{type}/{from}/{to}/{grade}/{typegrade}', 'TrabajosController@pdfs')->name('pdf');
 });
 Auth::routes();
 
