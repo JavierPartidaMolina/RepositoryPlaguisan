@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\clientes;
 use App\productos;
+use App\listados;
 
 class TrabajosController extends Controller
 {
@@ -24,12 +25,20 @@ class TrabajosController extends Controller
         if($request->cliente==""){
             $clientes = clientes::All();
             return view("servicios.detail",compact('clientes'))->with('error',"Debe seleccionar un cliente");
+        }else{
+            $listado= listados::create($request->all());
+            $cliente = clientes::find($request->cliente);
+            $nombre = $cliente -> razonSocial;
+            $listado -> cliente = $nombre;
+            $fech = \Carbon\Carbon::parse($listado -> fecha)->addYear();
+            $listado -> fecha = $fech;
+            $listado -> save();
+            $fecha = \Carbon\Carbon::parse($request->fecha)->format('d-m-Y');
+            return view("servicios.add",compact('cliente', 'fecha'));
         }
-        $cliente = clientes::find($request->cliente);
-        $fecha = \Carbon\Carbon::parse($request->fecha)->format('d-m-Y');
-        return view("servicios.add",compact('cliente', 'fecha'));
+        
     }
-
+    
     public function pegatina($id, $fech){
         $cliente = clientes::find($id);
         $fecha= $fech;

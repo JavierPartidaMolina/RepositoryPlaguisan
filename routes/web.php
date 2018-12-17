@@ -22,6 +22,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/trabajos', 'TrabajosController@index');
     Route::get('/especies', 'EspeciesController@index');
     Route::get('/productos', 'ProductosController@index');
+    Route::get('/listados', 'ListadosController@index');
+
+    Route::post('/buscarListado', 'ListadosController@buscar');
 
     Route::get('/pegatina/{id}/{fecha}', 'TrabajosController@pegatina');
 
@@ -43,7 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('addespecies', 'EspeciesController@store');
     Route::post('addproducto', 'ProductosController@store');
 
-    Route::get('pdf/{type}/{from}/{to}/{grade}/{typegrade}', 'TrabajosController@pdfs')->name('pdf');
+    Route::get('pdfListado/{mes}/{ano}', 'ListadosController@pdf')->name('pdfListado');
 });
 Auth::routes();
 
