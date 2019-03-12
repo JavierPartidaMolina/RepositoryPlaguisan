@@ -21,6 +21,7 @@ return array(
     'App\\Http\\Controllers\\EspeciesController' => $baseDir . '/app/Http/Controllers/EspeciesController.php',
     'App\\Http\\Controllers\\FacturasController' => $baseDir . '/app/Http/Controllers/FacturasController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
+    'App\\Http\\Controllers\\ListadosController' => $baseDir . '/app/Http/Controllers/ListadosController.php',
     'App\\Http\\Controllers\\PegatinasController' => $baseDir . '/app/Http/Controllers/PegatinasController.php',
     'App\\Http\\Controllers\\TrabajadoresController' => $baseDir . '/app/Http/Controllers/TrabajadoresController.php',
     'App\\Http\\Controllers\\TrabajosController' => $baseDir . '/app/Http/Controllers/TrabajosController.php',

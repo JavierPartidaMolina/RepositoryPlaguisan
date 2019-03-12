@@ -33,8 +33,8 @@
             @endforeach
         </table>
         <br>
-        <a href="/plaguisan/public/addespecie/">
-            <button class="btn btn-primary">Añadir</button>
+        <a type="button"  href="{{ route ('addEspecie') }}" style="color:white;" class="btn btn-primary">
+            Añadir
         </a> 
     <br>
 </center>

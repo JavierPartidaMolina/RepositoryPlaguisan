@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\clientes;
 use App\productos;
 use App\listados;
+use App\trabajos;
+use App\pegatinas;
 
 class TrabajosController extends Controller
 {
@@ -26,6 +28,15 @@ class TrabajosController extends Controller
             $clientes = clientes::All();
             return view("servicios.detail",compact('clientes'))->with('error',"Debe seleccionar un cliente");
         }else{
+            $servicio = trabajos::create([
+                'idCliente' => $request->cliente,
+                'idFactura' => null,
+                'idDiagnosis' => null,
+                'idCertificado' => null,
+                'idContrato' => null,
+                'idPegatina' => null,
+            ]);
+            $servicio->save();
             $listado= listados::create($request->all());
             $cliente = clientes::find($request->cliente);
             $nombre = $cliente -> razonSocial;
@@ -33,19 +44,35 @@ class TrabajosController extends Controller
             $fech = \Carbon\Carbon::parse($listado -> fecha)->addYear();
             $listado -> fecha = $fech;
             $listado -> save();
-            $fecha = \Carbon\Carbon::parse($request->fecha)->format('d-m-Y');
-            return view("servicios.add",compact('cliente', 'fecha'));
+            return view("servicios.add",compact('cliente', 'servicio'));
         }
         
     }
     
-    public function pegatina($id, $fech){
+    public function pegatina($id, $fech,$servicio){
+        $servicio2 = trabajos::find($servicio);
+        $pegatinaExiste = null;
+        if ($servicio2->idPegatina != null) {
+            $pegatinaExiste = pegatinas::find($servicio2->idPegatina);
+        }
         $cliente = clientes::find($id);
-        $fecha= $fech;
+        $fecha= \Carbon\Carbon::parse($fech)->format('d-m-Y');
         $fecha2 = \Carbon\Carbon::parse($fech)->addYear()->format('d-m-Y');
         $productos = productos::All();
-        return view("servicios.pegatina",compact('cliente','fecha','productos','fecha2'));
+        return view("servicios.pegatina",compact('cliente','fecha','productos','fecha2','servicio','servicio2','pegatinaExiste'));
     }
+
+    public function serviciosCliente($id){
+        $servicios = trabajos::where('idCliente', $id)->get();
+        return view("servicios.serviciosCliente",compact('servicios'));
+    }
+
+    public function verServicio($servicio){
+        $servicio = trabajos::find($servicio);
+        $cliente = clientes::find($servicio->idCliente);
+        return view("servicios.add",compact('cliente','servicio'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

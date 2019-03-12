@@ -384,6 +384,7 @@ class ComposerStaticInit80555bd19077a0b347be7ecfb4ccb05c
         'App\\Http\\Controllers\\EspeciesController' => __DIR__ . '/../..' . '/app/Http/Controllers/EspeciesController.php',
         'App\\Http\\Controllers\\FacturasController' => __DIR__ . '/../..' . '/app/Http/Controllers/FacturasController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\ListadosController' => __DIR__ . '/../..' . '/app/Http/Controllers/ListadosController.php',
         'App\\Http\\Controllers\\PegatinasController' => __DIR__ . '/../..' . '/app/Http/Controllers/PegatinasController.php',
         'App\\Http\\Controllers\\TrabajadoresController' => __DIR__ . '/../..' . '/app/Http/Controllers/TrabajadoresController.php',
         'App\\Http\\Controllers\\TrabajosController' => __DIR__ . '/../..' . '/app/Http/Controllers/TrabajosController.php',

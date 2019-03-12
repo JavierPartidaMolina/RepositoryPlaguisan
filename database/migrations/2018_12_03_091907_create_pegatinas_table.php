@@ -17,9 +17,9 @@ class CreatePegatinasTable extends Migration
             $table->engine="InnoDB";
             $table->increments('id');
             $table->unsignedInteger('idCliente');
-            $table->foreign('idCliente')->references('id')->on('clientes');
+            $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('cascade');
             $table->unsignedInteger('idProducto');
-            $table->foreign('idProducto')->references('id')->on('productos');
+            $table->foreign('idProducto')->references('id')->on('productos')->onDelete('cascade');
             $table->string('dosis');
             $table->string('fechaDesde');
             $table->string('fechaHasta');

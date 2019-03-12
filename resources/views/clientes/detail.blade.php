@@ -28,12 +28,15 @@
                     <input value="{{$cliente->direccion}}" style="width:70%;" type="text" class="form-control" readonly>
                     <br>
                     <br>
-                    <a class="btn btn-info" href="/plaguisan/public/addcliente/">
+                    <a type="button" href="{{ route ('addcliente') }}" style="color:white;" class="btn btn-primary">
                         Añadir
                     </a>
-                    <a class="btn btn-info" href="/plaguisan/public/editcliente/{{$cliente->id}}">
+                    <a type="button"  href="{{ route ('editcliente', ['id'=> $cliente->id]) }}" style="color:white;" class="btn btn-primary">
                        Editar
-                    </a>         
+                    </a>       
+                    <a type="button"   href="{{ route ('serviciosCliente', ['id'=> $cliente->id]) }}" style="color:white;" class="btn btn-primary">
+                        Servicios
+                     </a>    
 
                 </td>
                 <td>

@@ -23,14 +23,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/especies', 'EspeciesController@index');
     Route::get('/productos', 'ProductosController@index');
     Route::get('/listados', 'ListadosController@index');
-
+    Route::get('/serviciosCliente/{id}', 'TrabajosController@serviciosCliente')->name('serviciosCliente');
+    Route::get('/verServicio/{servicio}', 'TrabajosController@verServicio')->name('verServicio');
+    
     Route::post('/buscarListado', 'ListadosController@buscar');
 
-    Route::get('/pegatina/{id}/{fecha}', 'TrabajosController@pegatina');
+    Route::get('/pegatina/{id}/{fecha}/{servicio}', 'TrabajosController@pegatina');
 
     Route::post('creatingJob', 'TrabajosController@creating');
 
-    Route::get('editcliente/{id}', 'ClientesController@edit');
+    Route::get('editcliente/{id}', 'ClientesController@edit')->name('editcliente');
     Route::get('editespecie/{id}', 'EspeciesController@edit');
     Route::get('editproducto/{id}', 'ProductosController@edit');
 
@@ -38,15 +40,19 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('editespecie/{id}', 'EspeciesController@update');
     Route::post('editproducto/{id}', 'ProductosController@update');
 
-    Route::get('addcliente', 'ClientesController@create');
-    Route::get('addespecie', 'EspeciesController@create');
-    Route::get('addproducto', 'ProductosController@create');
+    Route::get('addcliente', 'ClientesController@create')->name('addcliente');
+    Route::get('addespecie', 'EspeciesController@create')->name('addEspecie');
+    Route::get('addproducto', 'ProductosController@create')->name('addProducto');
 
     Route::post('addclientes', 'ClientesController@store');
     Route::post('addespecies', 'EspeciesController@store');
     Route::post('addproducto', 'ProductosController@store');
+    Route::post('addPegatina', 'PegatinasController@store')->name('addPegatina');
+
 
     Route::get('pdfListado/{mes}/{ano}', 'ListadosController@pdf')->name('pdfListado');
+    Route::get('pdfPegatina/{pegatina}', 'PegatinasController@pdf')->name('pdfPegatina');
+
 });
 Auth::routes();
 

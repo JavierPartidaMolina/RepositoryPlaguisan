@@ -29,20 +29,43 @@
                         <input value="{{$cliente->direccion}}" style="width:70%;" type="text" class="form-control" readonly>
                     <br>
                     <p>Fecha de servicio:</p>
-                        <input value="{{$fecha}}" style="width:70%;" type="text" class="form-control" readonly>
+                        <input value="{{$servicio->fecha}}" style="width:70%;" type="text" class="form-control" readonly>
                     <br> 
                     <br>
                 </td>
             </tr>
         </table>
         <br>
-        <button type="button" class="btn btn-primary">Diagnosis<button>
-        <button type="button" class="btn btn-primary">Certificado<button>
-        <a href="{{url('pegatina/'.$cliente->id.'/'.$fecha)}}">
-            <button  type="submit" class = "btn btn-primary">Pegatina</button>
-        </a>
-        <button type="button" class="btn btn-primary">Contrato<button>
-        <button type="button" class="btn btn-primary">Factura<button>
+
+        @if ($servicio->idDiagnosis == null)
+            <a type="button" style="color:white;" class="btn btn-primary">Diagnosis</a>
+        @else
+            <a type="button" style="color:white;" class="btn btn-success">Diagnosis</a>
+        @endif
+
+        @if ($servicio->idCertificado == null)
+            <a type="button" style="color:white;" class="btn btn-primary">Certificado</a>
+        @else
+            <a type="button" style="color:white;" class="btn btn-success">Certificado</a>
+        @endif
+
+        @if ($servicio->idPegatina == null)
+            <a type="button" style="color:white;" href="{{url('pegatina/'.$cliente->id.'/'.$servicio->created_at.'/'.$servicio->id)}}" class = "btn btn-primary">Pegatina</a>
+        @else
+            <a type="button" style="color:white;" href="{{url('pegatina/'.$cliente->id.'/'.$servicio->created_at.'/'.$servicio->id)}}" class = "btn btn-success">Pegatina</a>
+        @endif
+
+        @if ($servicio->idContrato == null)
+            <a type="button" style="color:white;" class="btn btn-primary">Contrato</a>
+        @else
+            <a type="button" style="color:white;" class="btn btn-success">Contrato</a>
+        @endif
+
+        @if ($servicio->idFactura == null)
+            <a type="button" style="color:white;" class="btn btn-primary">Factura</a>
+        @else
+            <a type="button" style="color:white;" class="btn btn-success">Factura</a>
+        @endif
     </div>
 </center>
 @endsection
