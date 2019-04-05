@@ -8,6 +8,8 @@ use App\productos;
 use App\listados;
 use App\trabajos;
 use App\pegatinas;
+use App\contratos;
+use App\facturas;
 
 class TrabajosController extends Controller
 {
@@ -60,6 +62,31 @@ class TrabajosController extends Controller
         $fecha2 = \Carbon\Carbon::parse($fech)->addYear()->format('d-m-Y');
         $productos = productos::All();
         return view("servicios.pegatina",compact('cliente','fecha','productos','fecha2','servicio','servicio2','pegatinaExiste'));
+    }
+
+    public function contrato($id, $fech,$servicio){
+        $servicio2 = trabajos::find($servicio);
+        $contratoExiste = null;
+        if ($servicio2->idContrato != null) {
+            $contratoExiste = contratos::find($servicio2->idContrato);
+        }
+        $cliente = clientes::find($id);
+        $fecha= \Carbon\Carbon::parse($fech)->format('d-m-Y');
+        $fecha2 = \Carbon\Carbon::parse($fech)->addYear()->format('d-m-Y');
+
+        return view("servicios.contrato",compact('cliente','fecha','fecha2','servicio','servicio2','contratoExiste'));
+    }
+
+    public function factura($id,$servicio){
+        $servicio2 = trabajos::find($servicio);
+        $facturaExiste = null;
+        if ($servicio2->idFactura != null) {
+            $facturaExiste = facturas::find($servicio2->idFactura);
+        }
+        $cliente = clientes::find($id);
+
+
+        return view("servicios.factura",compact('cliente','servicio','servicio2','facturaExiste'));
     }
 
     public function serviciosCliente($id){

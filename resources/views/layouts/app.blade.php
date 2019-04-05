@@ -19,6 +19,21 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .navbar{
+            background: #1A2980;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #26D0CE, #1A2980);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #26D0CE, #1A2980); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            color: white;
+        }
+
+        .navbar-brand, .dropdown-toggle{
+            color: white !important;
+        }
+
+        
+
+    </style>
 </head>
 <body>
     <div id="app">

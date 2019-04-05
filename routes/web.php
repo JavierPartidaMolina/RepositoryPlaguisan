@@ -29,6 +29,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/buscarListado', 'ListadosController@buscar');
 
     Route::get('/pegatina/{id}/{fecha}/{servicio}', 'TrabajosController@pegatina');
+    Route::get('/contrato/{id}/{fecha}/{servicio}', 'TrabajosController@contrato');
+    Route::get('/factura/{id}/{servicio}', 'TrabajosController@factura');
+
+
 
     Route::post('creatingJob', 'TrabajosController@creating');
 
@@ -48,6 +52,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('addespecies', 'EspeciesController@store');
     Route::post('addproducto', 'ProductosController@store');
     Route::post('addPegatina', 'PegatinasController@store')->name('addPegatina');
+    Route::post('addContrato', 'ContratosController@store')->name('addContrato');
+    Route::post('addFactura', 'FacturasController@store')->name('addFactura');
+
+
 
 
     Route::get('pdfListado/{mes}/{ano}', 'ListadosController@pdf')->name('pdfListado');

@@ -56,15 +56,15 @@
         @endif
 
         @if ($servicio->idContrato == null)
-            <a type="button" style="color:white;" class="btn btn-primary">Contrato</a>
+            <a type="button" style="color:white;" href="{{url('contrato/'.$cliente->id.'/'.$servicio->created_at.'/'.$servicio->id)}}" class="btn btn-primary">Contrato</a>
         @else
-            <a type="button" style="color:white;" class="btn btn-success">Contrato</a>
+            <a type="button" style="color:white;" href="{{url('contrato/'.$cliente->id.'/'.$servicio->created_at.'/'.$servicio->id)}}" class="btn btn-success">Contrato</a>
         @endif
 
         @if ($servicio->idFactura == null)
-            <a type="button" style="color:white;" class="btn btn-primary">Factura</a>
+            <a type="button" style="color:white;" href="{{url('factura/'.$cliente->id.'/'.$servicio->id)}}" class="btn btn-primary">Factura</a>
         @else
-            <a type="button" style="color:white;" class="btn btn-success">Factura</a>
+            <a type="button" style="color:white;" href="{{url('factura/'.$cliente->id.'/'.$servicio->id)}}" class="btn btn-success">Factura</a>
         @endif
     </div>
 </center>
